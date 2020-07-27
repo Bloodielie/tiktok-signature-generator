@@ -1,0 +1,2 @@
+class TikTokBanned(Exception):
+    pass

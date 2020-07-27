@@ -1,0 +1,4 @@
+pyppeteer==0.2.2
+fastapi==0.60.1
+uvicorn==0.11.6
+ujson==3.0.0
