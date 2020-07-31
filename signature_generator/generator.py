@@ -29,7 +29,8 @@ class SignatureGenerator:
             'userDataDir': "./tmp",
             'handleSIGINT': False,
             'handleSIGTERM': False,
-            'handleSIGHUP': False
+            'handleSIGHUP': False,
+            "autoClose": False
         }
 
         self._launcher = Launcher(options=self.options)
