@@ -32,7 +32,7 @@ class SignatureGenerator:
             'handleSIGHUP': False
         }
 
-        self._launcher = Launcher()
+        self._launcher = Launcher(options=self.options)
         self._browser = None
         self._initialization_lock = asyncio.Lock()
         self._verify_fp = None
