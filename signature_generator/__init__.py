@@ -1,1 +1,1 @@
-from signature_generator.generator import SignatureGenerator
+from signature_generator.generator.generator import SignatureGenerator

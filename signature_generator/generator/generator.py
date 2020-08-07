@@ -1,18 +1,18 @@
 import asyncio
 import random
+from typing import Optional
 
 from pyppeteer.launcher import Launcher
 
-from .exceptions import TikTokBanned
-from .stealth import stealth
+from signature_generator.generator.exceptions import TikTokBanned
+from signature_generator.generator.stealth import stealth
 
 
 class SignatureGenerator:
-    def __init__(self) -> None:
+    def __init__(self, *, user_agent: Optional[str] = None) -> None:
         self.referrer = "https://www.tiktok.com/"
 
-        self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.0 " \
-                          "Safari/537.36) "
+        self.user_agent = user_agent or "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.0 Safari/537.36)"
 
         self.options = {
             'args': [
@@ -29,10 +29,11 @@ class SignatureGenerator:
             'userDataDir': "./tmp",
             'handleSIGINT': False,
             'handleSIGTERM': False,
-            'handleSIGHUP': False
+            'handleSIGHUP': False,
+            "autoClose": False
         }
 
-        self._launcher = Launcher()
+        self._launcher = Launcher(self.options)
         self._browser = None
         self._initialization_lock = asyncio.Lock()
         self._verify_fp = None

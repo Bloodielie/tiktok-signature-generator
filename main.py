@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 
-from signature_generator.generator import SignatureGenerator
+from signature_generator import SignatureGenerator
 from pydantic import BaseModel
 
 app = FastAPI(title="TikTok signature generator", description="This is an api for generating signatures tiktok "
